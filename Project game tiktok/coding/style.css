@@ -23,7 +23,7 @@ body{
     justify-content:center;
     align-items:center;
     cursor:pointer;
-    transition:all .3=s ease;
+    transition:all .3s ease;
     position:relative;
 }
 
@@ -238,7 +238,7 @@ body{
 }
 
 .character img{
-    width:1100px;
+    width:900px;
     max-width:none;
     user-select:none;
     pointer-events:none;
@@ -271,15 +271,15 @@ body{
 
 .girls .character{
     position:absolute;
-    right:-300px;
-    bottom:180px;
+    right:-238px;
+    bottom:100px;
     z-index:5;
 }
 
 .boys .character{
     position:absolute;
-    left:-330px;
-    bottom:180px;
+    left:-260px;
+    bottom:100px;
     z-index:5;
 }
 
@@ -319,4 +319,152 @@ body{
 .character,
 .character img{
     pointer-events:none;
+}
+
+/* =========================
+   LIVE IMAGE
+========================= */
+
+.live-badge{
+    position:absolute;
+    top:10px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:999;
+    pointer-events:none;
+
+    animation:livePulse 1.5s infinite ease-in-out;
+}
+
+.live-badge img{
+    width:125px;
+    height:auto;
+    display:block;
+
+    animation:
+        glowLive 1.5s infinite alternate,
+        liveScale 1.5s infinite ease-in-out;
+
+    filter:
+        drop-shadow(0 0 8px rgba(255,0,0,.8))
+        drop-shadow(0 0 20px rgba(255,0,0,.7))
+        drop-shadow(0 0 40px rgba(255,0,0,.6));
+}
+
+@keyframes glowLive{
+
+    0%{
+        filter:
+            drop-shadow(0 0 8px rgba(255,0,0,.8))
+            drop-shadow(0 0 20px rgba(255,0,0,.7))
+            drop-shadow(0 0 40px rgba(255,0,0,.6));
+    }
+
+    100%{
+        filter:
+            drop-shadow(0 0 15px rgba(255,0,0,1))
+            drop-shadow(0 0 35px rgba(255,0,0,.95))
+            drop-shadow(0 0 70px rgba(255,0,0,.85));
+    }
+}
+
+@keyframes liveScale{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.06);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+@keyframes livePulse{
+
+    0%{
+        transform:translateX(-50%);
+    }
+
+    50%{
+        transform:translateX(-50%);
+    }
+
+    100%{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================
+   CHARACTER SWAY EFFECT
+========================= */
+
+#girlsCharacter,
+#boysCharacter{
+    animation:characterSway 1.8s infinite ease-in-out;
+    transform-origin:center bottom;
+}
+
+@keyframes characterSway{
+
+    0%{
+        transform:
+            rotate(-2deg)
+            translateY(0);
+    }
+
+    25%{
+        transform:
+            rotate(2deg)
+            translateY(-3px);
+    }
+
+    50%{
+        transform:
+            rotate(-2deg)
+            translateY(0);
+    }
+
+    75%{
+        transform:
+            rotate(2deg)
+            translateY(-3px);
+    }
+
+    100%{
+        transform:
+            rotate(-2deg)
+            translateY(0);
+    }
+}
+
+/* =========================
+   BOYS ATTACK GLOW
+========================= */
+
+.boys-glow{
+
+    
+
+     filter:
+        brightness(1.15)
+        saturate(1.2)
+        drop-shadow(0 0 8px rgb(38, 0, 255));
+}
+
+/* =========================
+   GIRLS ATTACK GLOW
+========================= */
+
+.girls-glow{
+
+    filter:
+        brightness(1.15)
+        saturate(1.3)
+        drop-shadow(0 0 8px rgb(255, 0, 0))
+        drop-shadow(0 0 9px rgb(236, 5, 5));
+
 }
