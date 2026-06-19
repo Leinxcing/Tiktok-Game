@@ -47,10 +47,12 @@ function girlsAttack() {
 
     // ANIMASI GIRLS MAJU
     girlsCharacter.classList.add("push-girls");
+    girlsCharacter.classList.add("girls-glow");
 
     setTimeout(() => {
-        girlsCharacter.classList.remove("push-girls");
-    }, 150);
+    girlsCharacter.classList.remove("push-girls");
+    girlsCharacter.classList.remove("girls-glow");
+    }, 300);
 
     girlsCharacter.src = girlsNormalImg;
     boysCharacter.src = boysPanicImg;
@@ -75,10 +77,12 @@ function boysAttack() {
 
     // ANIMASI BOYS MAJU
     boysCharacter.classList.add("push-boys");
+    boysCharacter.classList.add("boys-glow");
 
     setTimeout(() => {
-        boysCharacter.classList.remove("push-boys");
-    }, 150);
+    boysCharacter.classList.remove("push-boys");
+    boysCharacter.classList.remove("boys-glow");
+    }, 300);
 
     boysCharacter.src = boysNormalImg;
     girlsCharacter.src = girlsPanicImg;
@@ -121,17 +125,6 @@ function updateDisplay() {
     // GARIS TENGAH IKUT BERGERAK
     if (battleLine) {
         battleLine.style.left = girlsPercent + "%";
-    }
-
-    // PERSENTASE
-    percentage.textContent = girlsPercent + "%";
-
-    if (girlsPercent > 50) {
-        percentage.style.color = "#ff00ff";
-    } else if (girlsPercent < 50) {
-        percentage.style.color = "#00b7ff";
-    } else {
-        percentage.style.color = "#ffffff";
     }
 }
 
