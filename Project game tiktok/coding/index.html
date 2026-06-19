@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boys vs Girls Battle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game-container">
+
+    <!-- AREA KLIK TETAP -->
+    <div id="girlsZone"></div>
+    <div id="boysZone"></div>
+
+    <!-- GIRLS -->
+    <div class="team girls" id="girlsSide">
+        <div class="score-box left">
+            <span id="girlsScore">0</span>
+            <div>TEAM GIRLS</div>
+        </div>
+
+        <div class="character">
+        <img src="girls.png" id="girlsCharacter" alt="Girls">
+        </div>
+
+        <div class="click-counter">
+            <span id="girlsClicks">0</span> Score
+        </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center-line" id="battleLine">
+    <span id="percentage">50%</span>
+    </div>
+
+    <!-- BOYS -->
+    <div class="team boys" id="boysSide">
+        <div class="score-box right">
+            <div>TEAM BOYS</div>
+            <span id="boysScore">0</span>
+        </div>
+
+        <div class="character">
+             <img src="boys1.png" id="boysCharacter" alt="Boys">
+        </div>
+
+        <div class="click-counter">
+            <span id="boysClicks">0</span> Score
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<div id="winnerPopup" class="winner-popup">
+    <div class="popup-content">
+        <h1 id="winnerText"></h1>
+    </div>
+</div>
+
+</body>
+</html>

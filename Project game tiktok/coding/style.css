@@ -1,0 +1,322 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    overflow:hidden;
+    height:100vh;
+}
+
+.game-container{
+    display:flex;
+    width:100%;
+    height:100vh;
+    position:relative;
+}
+
+.team{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:all .3=s ease;
+    position:relative;
+}
+
+.girls{
+    width:50%;
+    background:linear-gradient(135deg,#ff3dcf,#ff8fe3);
+}
+
+.boys{
+    width:50%;
+    background:linear-gradient(135deg,#29b6ff,#7ad7ff);
+}
+
+.center-line{
+    position:absolute;
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+    width:6px;
+    height:100%;
+    background:white;
+    z-index:10;
+    transition:left .2s ease;
+    box-shadow:0 0 15px rgba(255,255,255,.8);
+}
+
+.center-line span{
+    position:absolute;
+    top:40px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    font-size:40px;
+    font-weight:bold;
+}
+
+.score-box{
+    position:absolute;
+    top:30px;
+    display:flex;
+    align-items:center;
+    font-weight:bold;
+    overflow:hidden;
+}
+
+.left{
+    left:20px;
+}
+
+.right{
+    right:20px;
+}
+
+.score-box span{
+    background:black;
+    color:white;
+    padding:15px 25px;
+    font-size:30px;
+}
+
+.score-box div{
+    padding:15px 25px;
+    color:white;
+    font-size:24px;
+}
+
+.girls .score-box div{
+    background:#b700ff;
+}
+
+.boys .score-box div{
+    background:#00b7ff;
+}
+
+.character{
+    font-size:180px;
+    user-select:none;
+    transition:.2s;
+}
+
+/*
+.character:active{
+    transform:scale(1.1);
+}
+*/
+
+.click-counter{
+    position:absolute;
+    bottom:20px;
+    padding:12px 20px;
+    border:2px solid white;
+    border-radius:15px;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.character{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.team:hover{
+    filter:brightness(1.08);
+}
+
+@media(max-width:768px){
+
+    .character{
+        font-size:120px;
+    }
+
+    .score-box span,
+    .score-box div{
+        font-size:18px;
+        padding:10px 15px;
+    }
+
+    .center-line span{
+        font-size:28px;
+    }
+}
+
+.winner-popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.popup-content{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.popup-content h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.popup-content button{
+    padding:15px 30px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.popup-content{
+    background:white;
+    padding:40px 60px;
+    border-radius:20px;
+    text-align:center;
+    animation: zoomIn .5s ease;
+}
+
+.popup-content h1{
+    font-size:60px;
+    font-weight:bold;
+}
+
+@keyframes zoomIn{
+    from{
+        transform:scale(.5);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+@keyframes pushLeft{
+    0%{
+        transform:translateX(0);
+    }
+    50%{
+        transform:translateX(-30px);
+    }
+    100%{
+        transform:translateX(0);
+    }
+}
+
+.push-boys{
+    animation:pushLeft .15s ease;
+}
+
+@keyframes pushedBack {
+
+    0%{
+        transform:translateX(0);
+    }
+
+    50%{
+        transform:translateX(20px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+}
+
+.pushed-boys{
+    animation:pushedBack .3s ease;
+}
+
+.character img{
+    width:1100px;
+    max-width:none;
+    user-select:none;
+    pointer-events:none;
+    transition:all .15s ease;
+}
+
+
+@keyframes pushRight{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    50%{
+        transform:translateX(30px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+}
+
+.push-girls{
+    animation:pushRight .15s ease;
+}
+
+/* =========================
+   POSISI KARAKTER DEKAT GARIS
+========================= */
+
+.girls .character{
+    position:absolute;
+    right:-300px;
+    bottom:180px;
+    z-index:5;
+}
+
+.boys .character{
+    position:absolute;
+    left:-330px;
+    bottom:180px;
+    z-index:5;
+}
+
+/* =========================
+   AREA KLIK TETAP
+========================= */
+
+#girlsZone{
+    position:absolute;
+    top:0;
+    left:0;
+    width:50%;
+    height:100%;
+    z-index:1;
+    background:transparent;
+}
+
+#boysZone{
+    position:absolute;
+    top:0;
+    right:0;
+    width:50%;
+    height:100%;
+    z-index:1;
+    background:transparent;
+}
+
+/* UI tetap di atas */
+.character,
+.score-box,
+.click-counter,
+.center-line{
+    z-index:10;
+}
+
+/* Karakter tidak bisa diklik */
+.character,
+.character img{
+    pointer-events:none;
+}
