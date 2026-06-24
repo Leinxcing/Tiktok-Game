@@ -113,9 +113,17 @@ body{
 .click-counter{
     position:absolute;
     bottom:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+
     padding:12px 20px;
+
     border:2px solid white;
     border-radius:15px;
+
     color:white;
     font-size:22px;
     font-weight:bold;
@@ -159,7 +167,7 @@ body{
 }
 
 .popup-content{
-    background:white;
+    background:transparent;
     padding:40px;
     border-radius:20px;
     text-align:center;
@@ -179,11 +187,12 @@ body{
 }
 
 .popup-content{
-    background:white;
-    padding:40px 60px;
-    border-radius:20px;
+    background:transparent;
+    padding:0;
+    border-radius:0;
     text-align:center;
     animation: zoomIn .5s ease;
+    box-shadow:none;
 }
 
 .popup-content h1{
@@ -238,11 +247,20 @@ body{
 }
 
 .character img{
-    width:900px;
     max-width:none;
     user-select:none;
     pointer-events:none;
     transition:all .15s ease;
+}
+
+/* BOYS */
+#boysCharacter{
+    width:900px;
+}
+
+/* GIRLS */
+#girlsCharacter{
+    width:480px;
 }
 
 
@@ -271,8 +289,8 @@ body{
 
 .girls .character{
     position:absolute;
-    right:-238px;
-    bottom:100px;
+    right:-60px;
+    bottom:105px;
     z-index:5;
 }
 
@@ -467,4 +485,50 @@ body{
         drop-shadow(0 0 8px rgb(255, 0, 0))
         drop-shadow(0 0 9px rgb(236, 5, 5));
 
+}
+
+.mushroom-icon{
+    width:60px;
+    height:auto;
+
+    margin-right:6px;
+
+    vertical-align:middle;
+
+    filter:
+        drop-shadow(0 0 2px rgba(255,255,255,.4));
+}
+
+
+
+@keyframes winnerZoom{
+
+    from{
+        transform:scale(.5);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+#winnerImage{
+    width:450px;
+    max-width:80vw;
+    height:auto;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255,255,255,.4))
+        drop-shadow(0 0 30px rgba(255,255,255,.2));
+
+    animation:winnerZoom .5s ease;
+}
+
+#boysCharacter,
+#girlsCharacter{
+    transition:
+        opacity .18s ease,
+        transform .18s ease;
 }
